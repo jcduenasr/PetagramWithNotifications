@@ -3,7 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="corner_radius_cardview">4dp</dimen>
-    <dimen name="nombre_cardview">30sp</dimen>
+    <dimen name="nombre_cardview">28sp</dimen>
     <dimen name="elevation_action_bar">4dp</dimen>
     <dimen name="nombre_cardview_perfil">20sp</dimen>
 </resources>

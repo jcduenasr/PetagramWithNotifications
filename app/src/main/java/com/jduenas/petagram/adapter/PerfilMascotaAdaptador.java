@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.jduenas.petagram.R;
 import com.jduenas.petagram.pojo.Mascota;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -36,7 +37,11 @@ public class PerfilMascotaAdaptador extends RecyclerView.Adapter<PerfilMascotaAd
     @Override
     public void onBindViewHolder(final PerfilMascotaViewHolder holder, int position) {
         final Mascota mascota = mascotas.get(position);
-        holder.imgFoto.setImageResource(mascota.getFoto());
+        //holder.imgFoto.setImageResource(mascota.getFoto());
+        Picasso.with(activity)
+                .load(mascota.getUrl_foto())
+                .placeholder(R.drawable.ic_dog)
+                .into(holder.imgFoto);
         holder.tvLikesCV.setText(Integer.toString(mascota.getLikes()));
 
     }

@@ -6,8 +6,13 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="menu_contacto">Contacto</string>
+    <string name="menu_cuenta">Configurar Cuenta</string>
     <string name="hint_nombres">Nombre Completo</string>
     <string name="hint_email">Email</string>
     <string name="hint_descripcion">Mensaje</string>
     <string name="about">Petragam es una aplicaion desarrollada como parte de la especializacion en desarrollo de aplicaciones Android en Coursera, funciona como una red social para mascotas, fue creada por el Ingeniero Juan Dueñas, actualmente Ingeniero de Desarrollo de una empresa de Tecnologia en Colombia, quien se esta especializando en desarrollo de aplicaciones Android.</string>
+    <string name="hint_username">Escribe tu usuario</string>
+    <string name="account_name">account_name</string>
+    <string name="account_id">account_id</string>
+    <string name="profile_picture">profile_picture</string>
 </resources>

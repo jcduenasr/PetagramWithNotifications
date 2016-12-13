@@ -5,33 +5,34 @@ package com.jduenas.petagram.pojo;
  */
 public class Mascota {
 
-    private int id;
-    private String nombre;
+    private String id;
+    private String nombreCompleto;
     private int likes;
-    private int foto;
+    private String url_foto;
 
     public Mascota() {
     }
 
-    public Mascota(String nombre, int likes, int foto) {
-        this.nombre = nombre;
+    public Mascota(String nombreCompleto, int likes, String url_foto) {
+        this.nombreCompleto = nombreCompleto;
         this.likes = likes;
-        this.foto = foto;
+        this.url_foto = url_foto;
     }
-    public int getId() {
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombreCompleto() {
+        return nombreCompleto;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
     }
 
     public int getLikes() {
@@ -42,11 +43,11 @@ public class Mascota {
         this.likes = likes;
     }
 
-    public int getFoto() {
-        return foto;
+    public String getUrl_foto() {
+        return url_foto;
     }
 
-    public void setFoto(int foto) {
-        this.foto = foto;
+    public void setUrl_foto(String url_foto) {
+        this.url_foto = url_foto;
     }
 }

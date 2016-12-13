@@ -7,6 +7,7 @@ package com.jduenas.petagram.presenter;
 public interface IRecyclerViewFragmentPresenter {
 
     void obtenerMascotasDB();
+    void obtenerMediosRecientes();
 
     void mostrarMascotasRV();
 }

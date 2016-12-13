@@ -17,4 +17,9 @@
         android:orderInCategory="101"
         >
     </item>
+    <item android:id="@+id/mAccount"
+        android:title="@string/menu_cuenta"
+        android:orderInCategory="103"
+        >
+    </item>
 </menu>

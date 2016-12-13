@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public interface IRecyclerViewFragment {
 
     public void generarLinearLayoutVertical();
+    public void generarGridLayout();
 
     public MascotaAdaptador crearAdaptador(ArrayList<Mascota> mascotas);
 
