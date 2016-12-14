@@ -46,10 +46,10 @@ public class RecyclerViewFragmentPresenter implements IRecyclerViewFragmentPrese
     @Override
     public void obtenerMediosRecientes() {
         RestApiAdapter restApiAdapter = new RestApiAdapter();
-        Gson gsonMediaRecent = restApiAdapter.construyeGsonDeserializadorMediaRecent();
+        Gson gsonMediaRecent = restApiAdapter.construyeGsonDeserializadorDataUserSearched();
         EndpointsApi endpointsApi = restApiAdapter.establecerConexionRestApiInstagram(gsonMediaRecent);
 
-        Call<MascotaResponse> mascotaResponseCall = endpointsApi.getRecentMedia();
+        Call<MascotaResponse> mascotaResponseCall = endpointsApi.getFollowedsSelf();
         mascotaResponseCall.enqueue(new Callback<MascotaResponse>() {
             @Override
             public void onResponse(Call<MascotaResponse> call, Response<MascotaResponse> response) {

@@ -43,7 +43,7 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
         final ConstructorMascotas constructorMascotas = new ConstructorMascotas(activity);
         //mascotaViewHolder.imgFoto.setImageResource(mascota.getUrl_foto());
         Picasso.with(activity)
-                .load(mascota.getUrl_foto())
+                .load(mascota.getProfile_picture())
                 .placeholder(R.drawable.ic_dog)
                 .into(mascotaViewHolder.imgFoto);
         mascotaViewHolder.tvLikesCV.setText(String.valueOf(mascota.getLikes()));
@@ -52,7 +52,7 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, DetalleMascota.class);
-                intent.putExtra("url", mascota.getUrl_foto());
+                intent.putExtra("url", mascota.getProfile_picture());
                 intent.putExtra("likes", mascota.getLikes());
                 activity.startActivity(intent);
             }

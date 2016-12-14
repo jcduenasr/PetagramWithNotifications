@@ -11,10 +11,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.jduenas.petagram.pojo.Mascota;
 import com.jduenas.petagram.restApi.ConstantesRestApi;
 import com.jduenas.petagram.restApi.EndpointsApi;
 import com.jduenas.petagram.restApi.adapter.RestApiAdapter;
 import com.jduenas.petagram.pojo.User;
+import com.jduenas.petagram.restApi.model.MascotaResponse;
 import com.jduenas.petagram.restApi.model.UserResponse;
 
 import java.util.ArrayList;
@@ -27,7 +29,7 @@ public class ConfigureAccount extends AppCompatActivity implements View.OnClickL
     private Toolbar toolbar;
     private Button btSaveAccount;
     private EditText etAccount;
-    private ArrayList<User> userAccount;
+    private ArrayList<Mascota> userAccount;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,12 +58,12 @@ public class ConfigureAccount extends AppCompatActivity implements View.OnClickL
         Gson gsonUserSearched = restApiAdapter.construyeGsonDeserializadorDataUserSearched();
         EndpointsApi endpointsApi = restApiAdapter.establecerConexionRestApiInstagram(gsonUserSearched);
         userAccount = new ArrayList<>();
-        Call<UserResponse> userResponseCall = endpointsApi.getUsersSearch(etAccount.getText().toString(), ConstantesRestApi.ACCESS_TOKEN);
-        userResponseCall.enqueue(new Callback<UserResponse>() {
+        Call<MascotaResponse> userResponseCall = endpointsApi.getUsersSearch(etAccount.getText().toString(), ConstantesRestApi.ACCESS_TOKEN);
+        userResponseCall.enqueue(new Callback<MascotaResponse>() {
             @Override
-            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
-                UserResponse userResponse = response.body();
-                userAccount = userResponse.getUsers();
+            public void onResponse(Call<MascotaResponse> call, Response<MascotaResponse> response) {
+                MascotaResponse userResponse = response.body();
+                userAccount = userResponse.getMascotas();
                 if (userAccount.size()>0){
                     SharedPreferences sharedPref = ConfigureAccount.this.getPreferences(ConfigureAccount.this.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPref.edit();
@@ -76,7 +78,7 @@ public class ConfigureAccount extends AppCompatActivity implements View.OnClickL
             }
 
             @Override
-            public void onFailure(Call<UserResponse> call, Throwable t) {
+            public void onFailure(Call<MascotaResponse> call, Throwable t) {
                 Toast.makeText(ConfigureAccount.this,"Error en la conexion. Intenta de nuevo", Toast.LENGTH_LONG).show();
                 Log.i("Error getRecentMedia","FALLO LA CONEXION: "+t.toString());
             }

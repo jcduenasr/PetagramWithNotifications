@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +44,7 @@ public class PerfilFragment extends Fragment {
     ArrayList<Mascota> mascotas = new ArrayList<>();
     private RecyclerView rvMascotas;
     private CircularImageView circularImageView;
+    private  TextView tvNombrePerfil;
 
     public PerfilFragment() {
         // Required empty public constructor
@@ -54,9 +56,9 @@ public class PerfilFragment extends Fragment {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_perfil, container, false);
         View v = inflater.inflate(R.layout.fragment_perfil, container, false);
-        TextView tvNombrePerfil = (TextView) v.findViewById(R.id.tvNombrePerfil);
+        tvNombrePerfil = (TextView) v.findViewById(R.id.tvNombrePerfil);
         circularImageView = (CircularImageView) v.findViewById(R.id.circularImageView);
-        tvNombrePerfil.setText("Droopy");
+        tvNombrePerfil.setText("Nombre");
         rvMascotas = (RecyclerView) v.findViewById(R.id.rvPerfilMascotas);
 
         GridLayoutManager glm = new GridLayoutManager(getActivity(),3);
@@ -87,6 +89,7 @@ public class PerfilFragment extends Fragment {
         SharedPreferences sharedPref = getActivity().getSharedPreferences("ConfigureAccount",getContext().MODE_PRIVATE);
         String accountId = "";
         String profile_picture = "";
+        String accountName = "";
         try{
             accountId = sharedPref.getString(getString(R.string.account_id), "");
         }catch (Exception e){
@@ -94,14 +97,17 @@ public class PerfilFragment extends Fragment {
         }
         try{
             profile_picture = sharedPref.getString(getString(R.string.profile_picture), "");
+            accountName = sharedPref.getString(getString(R.string.account_name), "");
         }catch (Exception e){
             profile_picture = "";
+            accountName = "";
         }
         if (!profile_picture.equals("")){
             Picasso.with(getActivity())
                     .load(profile_picture)
                     .placeholder(R.drawable.ic_dog)
                     .into(circularImageView);
+            tvNombrePerfil.setText(accountName);
         }
 
 

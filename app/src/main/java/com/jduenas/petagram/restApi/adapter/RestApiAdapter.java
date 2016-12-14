@@ -35,7 +35,7 @@ public class RestApiAdapter {
 
     public Gson construyeGsonDeserializadorDataUserSearched(){
         GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(UserResponse.class, new UserDeserializer());
+        gsonBuilder.registerTypeAdapter(MascotaResponse.class, new UserDeserializer());
 
         return gsonBuilder.create();
     }

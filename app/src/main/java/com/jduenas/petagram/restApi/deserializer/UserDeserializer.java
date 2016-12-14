@@ -7,8 +7,10 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import com.jduenas.petagram.pojo.Mascota;
 import com.jduenas.petagram.restApi.JsonKeys;
 import com.jduenas.petagram.pojo.User;
+import com.jduenas.petagram.restApi.model.MascotaResponse;
 import com.jduenas.petagram.restApi.model.UserResponse;
 
 import java.lang.reflect.Type;
@@ -18,17 +20,17 @@ import java.util.ArrayList;
  * Created by jduenas on 13/12/2016.
  */
 
-public class UserDeserializer implements JsonDeserializer<UserResponse> {
+public class UserDeserializer implements JsonDeserializer<MascotaResponse> {
     @Override
-    public UserResponse deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+    public MascotaResponse deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         Gson gson = new Gson();
-        UserResponse userResponse = gson.fromJson(json, UserResponse.class);
+        MascotaResponse userResponse = gson.fromJson(json, MascotaResponse.class);
         JsonArray userResponseData = json.getAsJsonObject().getAsJsonArray(JsonKeys.MEDIA_RESPONSE_ARRAY);
-        userResponse.setUsers(deserializerUserFromJson(userResponseData));
+        userResponse.setMascotas(deserializerUserFromJson(userResponseData));
         return userResponse;
     }
-    private ArrayList<User> deserializerUserFromJson(JsonArray userResponseData){
-        ArrayList<User> users = new ArrayList<>();
+    private ArrayList<Mascota> deserializerUserFromJson(JsonArray userResponseData){
+        ArrayList<Mascota> users = new ArrayList<>();
         for (int i = 0; i < userResponseData.size(); i++) {
             JsonObject userResponseDataObject = userResponseData.get(i).getAsJsonObject();
 
@@ -38,9 +40,9 @@ public class UserDeserializer implements JsonDeserializer<UserResponse> {
             String username         = userResponseDataObject.get(JsonKeys.USERNAME).getAsString();
 
 
-            User currentUser = new User();
+            Mascota currentUser = new Mascota();
             currentUser.setId(id);
-            currentUser.setFull_name(fullname);
+            currentUser.setNombreCompleto(fullname);
             currentUser.setProfile_picture(profile_picture);
             currentUser.setUsername(username);
 

@@ -17,8 +17,11 @@ public interface EndpointsApi {
     @GET(ConstantesRestApi.URL_GET_RECENT_MEDIA_USER)
     Call<MascotaResponse> getRecentMedia();
 
+    @GET(ConstantesRestApi.URL_GET_FOLOWEDS_SELF)
+    Call<MascotaResponse> getFollowedsSelf();
+
     @GET(ConstantesRestApi.URL_SEARCH_USER)
-    Call<UserResponse> getUsersSearch(@Query("q") String user,
+    Call<MascotaResponse> getUsersSearch(@Query("q") String user,
                                       @Query("access_token") String token);
 
     @GET(ConstantesRestApi.URL_GET_RECENT_MEDIA_USER_ID)
